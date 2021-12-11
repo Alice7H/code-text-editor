@@ -1,0 +1,72 @@
+.project {
+  width: calc(20% - 30px);
+  height: 100%;
+  margin-left: 30px;
+  box-sizing: border-box;
+}
+
+.project-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.project-form > h2 {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.project-form > input[type="text"],
+.project-form > select,
+.project-form > textarea {
+  margin: 16px auto;
+  width: 100%;
+  padding: 10px;
+}
+
+.project-form > textarea {
+  resize: none;
+  height: 80px;
+}
+
+.project-form > .input > option {
+  background-color: var(--white-16);
+  color: var(--main-text);
+}
+
+.project-form-color {
+  outline: 1px solid var(--main-text);
+  outline-offset: 8px;
+  border-radius: 8px;
+  border: none;
+  margin: 20px auto;
+  height: calc(56px - 16px);
+  width: calc(100% - 16px);
+}
+
+.project-form-color::-webkit-color-swatch {
+  border: none;
+  border-radius: 8px;
+}
+.project-form-color::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.project-form > button {
+  width: 100%;
+  margin: 20px auto;
+}
+
+@media screen and (max-width: 768px) {
+  .project {
+    width: 100%;
+    margin-left: 0px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .project {
+    padding: 10px;
+  }
+}

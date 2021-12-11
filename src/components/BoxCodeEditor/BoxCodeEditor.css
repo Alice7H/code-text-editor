@@ -1,0 +1,38 @@
+.code-editor_container {
+  background-color: aquamarine;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.code-editor_code {
+  background-color: var(--dark-text);
+  border-radius: 8px;
+  margin: 32px;
+}
+
+.code-editor_buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100px;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+}
+
+.code-editor_textarea {
+  resize: none;
+  background-color: transparent;
+  padding-left: 10px;
+  height: 300px;
+  width: 98%;
+  color: var(--main-text);
+  font-size: 16px;
+}
+
+.code-editor_textarea:hover,
+.code-editor_textarea:active,
+.code-editor_textarea:enabled,
+.code-editor_textarea:focus {
+  border: none;
+  outline: none;
+}

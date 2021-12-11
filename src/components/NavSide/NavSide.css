@@ -1,0 +1,10 @@
+.sidemenu-nav {
+  display: block;
+  align-items: start;
+  width: 100%;
+}
+
+.sidemenu-link > button {
+  margin: 16px 0;
+  margin-left: -20px;
+}

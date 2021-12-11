@@ -1,0 +1,79 @@
+.cards {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 75%;
+}
+
+.card {
+  border-radius: 8px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: calc(50% - 10px);
+  background-color: var(--black-16);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.card:nth-child(even) {
+  margin-left: 5px;
+}
+.card:nth-child(odd) {
+  margin-right: 5px;
+}
+
+.card-body {
+  text-align: left;
+  margin: 5px 20px;
+  color: var(--main-text);
+}
+
+.card-body > p,
+.card-body > h2 {
+  margin: 32px auto;
+}
+
+.card-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.left {
+  align-self: left;
+  margin-left: -20px;
+}
+
+.right {
+  align-self: right;
+}
+
+.card-buttons > .button-project {
+  padding: 10px;
+}
+
+.card-buttons > .button-user {
+  margin-left: 40%;
+}
+
+@media screen and (max-width: 768px) {
+  .cards {
+    flex-direction: column;
+    width: 100%;
+  }
+  .card {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .card {
+    width: 95%;
+  }
+  .card-buttons > .button-project {
+    padding: 5px;
+  }
+}

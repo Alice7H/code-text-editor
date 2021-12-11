@@ -1,0 +1,81 @@
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--darkBlue);
+  overflow-x: hidden;
+}
+
+:root {
+  --menu-color: #2d415b;
+  --main-text: #ffff;
+  --second-text: #c4c4c4;
+  --third-text: #0000;
+  --dark-text: #000000;
+
+  --blue: #5081fb;
+  --blue-8: rgba(80, 129, 251, 0.08);
+  --blue-16: rgba(80, 129, 251, 0.16);
+  --blue-24: rgba(80, 129, 251, 0.24);
+  --blue-64: rgba(80, 129, 251, 0.64);
+  --darkBlue: #051d3b;
+  --lightBlue1: #7ba4fc;
+  --lightBlue2: #96b9fd;
+
+  --white-8: rgba(255, 255, 255, 0.08);
+  --white-16: rgba(255, 255, 255, 0.16);
+  --white-24: rgba(255, 255, 255, 0.24);
+  --white-56: rgba(255, 255, 255, 0.56);
+  --white-72: rgba(255, 255, 255, 0.72);
+  --black-16: rgba(0, 0, 0, 0.16);
+
+  --mac-red: #ff5f56;
+  --mac-yellow: #ffbd2e;
+  --mac-gree: #27c93f;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+button {
+  border: none;
+  border-radius: 8px;
+  height: 56px;
+  line-height: 24px;
+  transition-duration: 0.5s;
+  cursor: pointer;
+}
+
+h2 {
+  font-family: Inter;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--main-text);
+  height: 18px;
+}
+
+.main {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100vw;
+  padding: 32px;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 768px) {
+  .main {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .main {
+    padding: 5px;
+  }
+}

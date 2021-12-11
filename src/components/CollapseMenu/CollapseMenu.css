@@ -1,0 +1,34 @@
+.collapse-menu {
+  background-color: var(--menu-color);
+  border-radius: 8px;
+  margin: 10px;
+  height: 100vh;
+  position: absolute;
+  right: 0;
+  top: 90px;
+  width: 70%;
+  z-index: 100;
+  padding-left: 20px;
+  box-sizing: border-box;
+}
+
+.fade {
+  margin: 32px auto;
+  border: 1px solid var(--white-8);
+}
+
+.collapse-menu > .button-user {
+  margin-top: 16px;
+  margin-left: -10px;
+}
+
+@media screen and (min-width: 600px) {
+  .collapse-menu {
+    width: 50%;
+  }
+}
+@media screen and (max-width: 375px) {
+  .collapse-menu {
+    top: 70px;
+  }
+}

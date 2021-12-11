@@ -1,0 +1,26 @@
+.code-editor {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  box-sizing: border-box;
+}
+
+.code-editor > button {
+  margin-top: 32px;
+  margin-bottom: 32px;
+  width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .code-editor {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .code-editor {
+    padding: 10px;
+  }
+}
