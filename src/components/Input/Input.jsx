@@ -1,12 +1,14 @@
 import React from 'react'
 import './Input.css';
 
-export default function Input(props) {
+export default function Input({id, type, value, onChange,placeholder }) {
   return (
-    <input type={props?.type || 'text' }
+    <input type={type || 'text' }
     className="input" 
-    value={props?.value}
-    onChange={props?.onChange}
-    placeholder={props?.placeholder}/>
+    value={value}
+    onChange={onChange}
+    placeholder={placeholder}
+    id={id}
+    />
   )
 }

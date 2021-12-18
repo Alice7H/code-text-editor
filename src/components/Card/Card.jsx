@@ -1,49 +1,70 @@
 import React, { useState } from 'react'
+import Highlight from 'react-highlight';
 import BoxCodeEditor from '../BoxCodeEditor';
-import User from '../Profile/User';
+import User from '../User';
 import Button from '../Button';
 import Comment from '../../assets/images/comments.svg';
-import Favorite from '../../assets/images/favorite.svg';
+import { ReactComponent as Favorite} from '../../assets/images/favorite.svg';
 import './Card.css';
 
-export default function Card() {
-  const [hide, setHide] = useState(true);
+export default function Card(props) {
+  const [toggleFavorite, setToggleFavorite] = useState(false);
+  const [counterFavorite, setCounterFavorite] = useState(0);
+  const project = props.project;
 
-  function handleMouseOver(){
-    setHide(false);
+  function handleEditProject(){
+    alert(props.project.id);
   }
-  
-  function handleMouseOut(){
-    setHide(true);
+
+  function handleComment(e) {
+    e.stopPropagation();
+    alert('botão comentário clicado');
+    // abre caixa de popup para inserir comentário ?
+    // redireciona para outra página para fazer comentário ?
+  }
+
+  function handleFavorite(e){
+    e.stopPropagation();
+    setToggleFavorite(!toggleFavorite);
+    !toggleFavorite && setCounterFavorite(counter => counter + 1)
+    toggleFavorite && setCounterFavorite(counter => counter - 1);
+  }
+
+  function handleShowProfile(e){
+    e.stopPropagation();
+    alert('botão autor do projeto clicado');
   }
 
   return (
-    <section className="card" 
-    onMouseOver={ handleMouseOver }
-    onMouseOut={ handleMouseOut } >   
-      <BoxCodeEditor/>
-      <div className="card-body">
-        <h2>Título do projeto</h2>
-        <p>Essa é a descrição do meu projeto</p>  
+    <div className="card" role="banner">   
+      <BoxCodeEditor color={project.color}>
+        <Highlight className={`language-${project.language}`} aria-label="Texto com highlight" >
+          {project.code}
+        </Highlight>
+      </BoxCodeEditor>
+      <div className="card-body" onClick={ handleEditProject } >
+        <h2>{project.name}</h2>
+        <p>{project.description}</p>  
         
-      { !hide &&   
-        <div className="card-buttons">
+        <div className="card-buttons" aria-haspopup="true">
           <div className="left">
-            <Button buttonType="button-project">
-              <img src={Comment} alt="Comentários" />
-              1
+            <Button className="button-project" onClick={handleComment} 
+              ariaLabel="Adicionar comentário" role="button">
+              <img src={Comment} alt=""/>
+              0
             </Button>
-            <Button buttonType="button-project">
-              <img src={Favorite} alt="Favoritos" />
-              3
+            <Button className="button-project" onClick={handleFavorite} 
+              ariaLabel="Favoritar" role="button">
+              <Favorite alt="" 
+              className={!toggleFavorite ? 'icon-favorite' : 'icon-favorite icon-favorite__active'}/>
+              { counterFavorite }
             </Button>
           </div>
-          <div className="right">
-            <User/>
+          <div className="right" onClick={handleShowProfile}>
+            <User className="button-user__small"/>
           </div>
         </div>
-      }
       </div>
-    </section>
+    </div>
   )
 }

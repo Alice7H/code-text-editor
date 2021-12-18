@@ -1,4 +1,4 @@
-import React from 'react'
+import { Link } from 'react-router-dom';
 import useWindowSize from '../../hooks/useWindowSize';
 import Profile from '../Profile';
 import Input from '../Input';
@@ -11,17 +11,26 @@ export default function Header() {
 
   return(
     <header className="header">
-      <nav className="header-nav">
-        <a href="#home" alt="Página inicial" className="header-logo_link">
-          <img src={Logo} className="header-logo_img" alt="logo" />
-        </a>
-        <div className="header-search">
-          { width <= 375
-            ? <SearchInput/>
-            : <Input type="text" placeholder="Busque por algo"/>
-          }
-        </div>
-        <Profile/>
+      <nav>
+        <ul className="header-nav">
+          <li className="header-logo">
+            <Link to="/" alt="Página de edição de código">
+              <img src={Logo} className="header-logo_img" alt="logo alura dev" title="Logo AluraDev"/>
+            </Link>
+          </li>
+          <li className="header-search">
+            { width <= 375
+              ? <SearchInput/>
+              : <>
+                <label className="screenReader-only" htmlFor="searchbox">Informe a busca por algo na página</label>
+                <Input type="text" placeholder="Busque por algo" id="searchbox"/>
+              </>
+            }
+          </li>
+          <li className="header-profile">
+            <Profile/>
+          </li>
+        </ul>
       </nav>
     </header>
   )

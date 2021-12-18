@@ -25,7 +25,7 @@ You will also see any lint errors in the console.
 
   - Header
   - SideMenu
-  - Cards
+  - Card
 
 ### Components
 
@@ -40,9 +40,11 @@ You will also see any lint errors in the console.
   - NavSide
 - CodeEditor
   - BoxCodeEditor
+    - Textarea/Highlight
 - Project
 - Card
   - BoxCodeEditor
+    - Highlight
   - User
 
 ### Support Components
@@ -50,7 +52,13 @@ You will also see any lint errors in the console.
 - Input
 - Button
 
-## Package, Libraries and Dependencies in the future
+## Package, Libraries and Dependencies
 
 - react-router-dom
 - highlight.js
+- react-highlight
+- react-toastify
+
+## Futures challeges
+
+- Change css to styled components ?

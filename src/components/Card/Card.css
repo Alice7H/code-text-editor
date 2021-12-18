@@ -17,6 +17,15 @@
   box-sizing: border-box;
 }
 
+.card:hover .card-buttons,
+.card:active .card-buttons {
+  display: flex;
+}
+
+.card:not(:hover) .card-buttons {
+  display: none;
+}
+
 .card:nth-child(even) {
   margin-left: 5px;
 }
@@ -33,6 +42,8 @@
 .card-body > p,
 .card-body > h2 {
   margin: 32px auto;
+  line-height: 24px;
+  font-family: "Inter", sans-serif;
 }
 
 .card-buttons {

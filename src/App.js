@@ -1,13 +1,18 @@
 import CodeEditorProvider from './contexts/ProjectContext';
+import { BrowserRouter,Routes,Route } from "react-router-dom";
 import EditCodePage from '../src/pages/EditCodePage';
-// import CommunityPage from '../src/pages/CommunityPage';
+import CommunityPage from '../src/pages/CommunityPage';
 import './assets/App.css';
 
 function App() {
   return (
     <CodeEditorProvider>
-      <EditCodePage/>
-      {/* <CommunityPage/> */}
+      <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<EditCodePage/>} />
+        <Route path="/community" element={<CommunityPage />} />
+      </Routes>
+      </BrowserRouter>
     </CodeEditorProvider>
   );
 }

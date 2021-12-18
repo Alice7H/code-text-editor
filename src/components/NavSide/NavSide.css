@@ -4,7 +4,11 @@
   width: 100%;
 }
 
-.sidemenu-link > button {
+.sidemenu-list > button {
   margin: 16px 0;
   margin-left: -20px;
+}
+
+.sidemenu-list > button > img {
+  pointer-events: none;
 }

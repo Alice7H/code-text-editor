@@ -68,6 +68,17 @@ h2 {
   box-sizing: border-box;
 }
 
+.screenReader-only {
+  width: 1px;
+  height: 1px;
+  color: white;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
 @media screen and (max-width: 768px) {
   .main {
     flex-direction: column;

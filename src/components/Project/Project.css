@@ -18,7 +18,6 @@
 }
 
 .project-form > input[type="text"],
-.project-form > select,
 .project-form > textarea {
   margin: 16px auto;
   width: 100%;
@@ -30,12 +29,7 @@
   height: 80px;
 }
 
-.project-form > .input > option {
-  background-color: var(--white-16);
-  color: var(--main-text);
-}
-
-.project-form-color {
+#color {
   outline: 1px solid var(--main-text);
   outline-offset: 8px;
   border-radius: 8px;
@@ -45,12 +39,17 @@
   width: calc(100% - 16px);
 }
 
-.project-form-color::-webkit-color-swatch {
+#color::-webkit-color-swatch {
   border: none;
   border-radius: 8px;
 }
-.project-form-color::-webkit-color-swatch-wrapper {
+#color::-webkit-color-swatch-wrapper {
   padding: 0;
+  border: none;
+}
+
+#color:focus {
+  border: 1px solid var(--lightBlue1);
 }
 
 .project-form > button {
@@ -58,15 +57,64 @@
   margin: 20px auto;
 }
 
+#description {
+  margin-bottom: 2rem;
+}
+
+#language {
+  width: inherit;
+  margin: 20px;
+}
+
+#language > option {
+  color: black;
+}
+
+.personalization {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
 @media screen and (max-width: 768px) {
   .project {
     width: 100%;
     margin-left: 0px;
+  }
+
+  .personalization {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  #language,
+  #color {
+    width: 50%;
+  }
+  #language {
+    margin-right: 12px;
+    margin-left: 0px;
+  }
+  #color {
+    margin-left: 12px;
+    margin-right: 0px;
   }
 }
 
 @media screen and (max-width: 375px) {
   .project {
     padding: 10px;
+  }
+  .personalization {
+    flex-direction: column;
+  }
+
+  #language,
+  #color {
+    width: 100%;
+    margin: 20px;
   }
 }

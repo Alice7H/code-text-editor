@@ -1,26 +1,33 @@
 import React from 'react'
 import Button from '../Button';
+import { useNavigate } from 'react-router-dom';
 import Code from '../../assets/images/icon-code-slash.svg';
 import Community from '../../assets/images/icon_community.svg';
 import './NavSide.css';
 
 export default function NavSide() {
+  const navigate = useNavigate();
+  const handleLinkToCodEditorPage = () => navigate("/")
+  const handleLinkToCommunity =() => navigate("/community")
+
   return (
     <>
-       <nav className="sidemenu-nav">
-        <a href="#home" className="sidemenu-link">
-          <Button buttonType="button-menu">
-            <img src={Code} alt="Editor de código" />
-            Editor de Código
-          </Button>
-        </a>
-        
-        <a href="#home" className="sidemenu-link">
-          <Button buttonType="button-menu">
-            <img src={Community} alt="Comunidade" />
-            Comunidade
-          </Button>
-        </a>
+       <nav className="sidemenu-nav" role="navigation">
+        <ul>
+          <li className="sidemenu-list">
+            <Button className="button-menu" role="link" onClick={handleLinkToCodEditorPage}>
+              <img src={Code} alt="" />
+              Editor de Código
+            </Button>
+          </li>
+           
+          <li className="sidemenu-list">    
+            <Button className="button-menu" onClick={handleLinkToCommunity}>
+              <img src={Community} alt="" />
+              Comunidade
+            </Button>
+          </li>
+        </ul>
       </nav>
     </>
   )

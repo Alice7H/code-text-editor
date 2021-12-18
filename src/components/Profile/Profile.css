@@ -1,11 +1,3 @@
-.profile {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-  width: 20%;
-}
-
 @media screen and (min-width: 769px) {
   .profile > .button-icon {
     display: none;

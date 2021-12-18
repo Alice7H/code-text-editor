@@ -1,4 +1,4 @@
-.search-collapse {
+.collapse-search {
   width: 100%;
   position: absolute;
   top: calc(100vh - 104px);
@@ -11,7 +11,7 @@
   align-items: center;
 }
 
-.search-collapse > .input {
+.collapse-search > .input {
   width: calc(100% - 32px);
   margin: 16px;
   background-color: #2d415b;

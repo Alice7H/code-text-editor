@@ -1,5 +1,5 @@
 .code-editor_container {
-  background-color: aquamarine;
+  /* background-color: aquamarine; */
   border-radius: 8px;
   width: 100%;
 }
@@ -17,6 +17,7 @@
   padding: 10px;
   border: none;
   border-radius: 8px;
+  box-sizing: border-box;
 }
 
 .code-editor_textarea {
@@ -35,4 +36,18 @@
 .code-editor_textarea:focus {
   border: none;
   outline: none;
+}
+
+/* react-highlight */
+pre {
+  height: 300px;
+  width: 99%;
+  border-radius: 18px;
+  box-sizing: border-box;
+}
+
+.hljs {
+  background: var(--dark-text) !important;
+  border-radius: 18px;
+  height: 265px;
 }

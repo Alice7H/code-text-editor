@@ -87,10 +87,14 @@
   color: var(--main-text);
   font-family: "Inter", serif;
   font-size: 16px;
-  padding-right: 10px;
+  padding-right: 5px;
+  width: 58px;
+  height: 40px;
 }
 .button-project > img {
-  margin: 0 10px;
+  width: 20px;
+  height: 17.5px;
+  margin: 0 5px;
 }
 .button-project:hover {
   background-color: var(--white-8);
@@ -109,6 +113,8 @@
   padding-right: 10px;
   align-items: center;
   display: flex;
+  width: 106px;
+  height: 56px;
 }
 .button-user > img {
   width: 32px;
@@ -116,6 +122,42 @@
   border-radius: 50%;
   margin: 0 10px;
 }
-.button-user:hover {
+
+.button-user__small {
+  background-color: transparent;
+  color: var(--main-text);
+  font-family: Inter;
+  font-size: 16px;
+  padding-right: 10px;
+  align-items: center;
+  display: flex;
+  height: 40px;
+  width: 90px;
+}
+
+.button-user__small > img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  margin: 0 10px;
+}
+
+.button-user:hover,
+.button-user__small:hover {
   background-color: var(--white-8);
+}
+
+svg.icon-favorite {
+  margin: 0 5px;
+  width: 20px;
+  height: 17.5px;
+  vertical-align: middle;
+}
+
+svg.icon-favorite path {
+  fill: var(--main-text);
+}
+
+svg.icon-favorite__active path {
+  fill: var(--mac-red);
 }

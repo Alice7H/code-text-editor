@@ -1,6 +1,8 @@
 import ReactDOM from 'react-dom';
-import './reset.css';
+import './assets/Reset.css';
 import App from './App';
+import '../node_modules/highlight.js/styles/vs2015.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 ReactDOM.render(
     <App />,
