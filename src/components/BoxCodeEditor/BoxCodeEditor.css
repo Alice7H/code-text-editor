@@ -1,7 +1,8 @@
 .code-editor_container {
-  /* background-color: aquamarine; */
   border-radius: 8px;
   width: 100%;
+  padding: 5px 0px;
+  /* min-height: 400px; */
 }
 
 .code-editor_code {
@@ -21,10 +22,10 @@
 }
 
 .code-editor_textarea {
-  resize: none;
+  resize: vertical;
   background-color: transparent;
   padding-left: 10px;
-  height: 300px;
+  min-height: 300px;
   width: 98%;
   color: var(--main-text);
   font-size: 16px;
@@ -44,10 +45,17 @@ pre {
   width: 99%;
   border-radius: 18px;
   box-sizing: border-box;
+  height: 100%;
 }
 
 .hljs {
   background: var(--dark-text) !important;
   border-radius: 18px;
+  min-height: 300px;
+  resize: vertical;
+}
+
+.card .hljs {
   height: 265px;
+  resize: none;
 }

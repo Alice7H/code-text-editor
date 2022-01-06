@@ -6,14 +6,14 @@
   font-weight: 400;
   font-size: 16px;
   background-color: var(--blue);
-  box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.24);
   text-align: center;
 }
 .button-filled:hover {
   background-color: var(--lightBlue1);
 }
 .button-filled:active {
-  border: 4px solid var(--blue);
+  background-color: var(--lightBlue1);
+  outline: 4px solid var(--blue-72);
 }
 .button-filled:focus {
   background-color: var(--lightBlue2);
@@ -27,14 +27,14 @@
   font-size: 16px;
 
   background-color: var(--blue-8);
-  box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.24);
   width: 90%;
 }
 .button-outlined:hover {
   background-color: var(--blue-16);
 }
 .button-outlined:active {
-  border: 4px solid var(--blue);
+  background-color: var(--blue-16);
+  outline: 4px solid var(--blue-24);
 }
 .button-outlined:focus {
   background-color: var(--blue-24);
@@ -54,7 +54,7 @@
 
 .button-menu {
   background-color: transparent;
-  color: var(--white-56);
+  color: var(--second-text);
   font-family: Inter;
   font-size: 16px;
   padding-right: 10px;

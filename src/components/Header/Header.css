@@ -36,7 +36,7 @@
   width: 20%;
 }
 
-.header-search > input[type="text"] {
+.header-search > input {
   padding-left: 10px;
 }
 
@@ -45,7 +45,7 @@
     padding: 15px;
   }
 
-  .header-search > input[type="text"] {
+  .header-search > input {
     display: none;
   }
 }
@@ -55,7 +55,7 @@
     display: none;
   }
 
-  .header-search > input[type="text"] {
+  .header-search > input {
     display: block;
     width: 100%;
   }
@@ -66,13 +66,13 @@
     width: 100%;
   }
 
-  .header-search > input[type="text"] {
+  .header-search > input {
     width: 80%;
     margin-left: auto;
   }
 }
 @media screen and (max-width: 500px) {
-  .header-search > input[type="text"] {
+  .header-search > input {
     width: 60%;
     margin-left: auto;
   }

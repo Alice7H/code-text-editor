@@ -7,11 +7,11 @@ import Search from '../../assets/images/search.svg';
 import Close from '../../assets/images/close.svg';
 import './SearchInput.css';
 
-export default function SearchInput() {
+export default function SearchInput(props) {
  const searchRef = useRef('');
-  const [openedSearch, setOpenedSearch] = useState(false);
-  useEscapeListen(()=> setOpenedSearch(false));
-  useOnClickOutside(searchRef, '#searchCollapseButton', toggleSearch);
+ const [openedSearch, setOpenedSearch] = useState(false);
+ useEscapeListen(()=> setOpenedSearch(false));
+ useOnClickOutside(searchRef, '#searchCollapseButton', toggleSearch);
 
   function toggleSearch() {
     setOpenedSearch(!openedSearch);
@@ -26,7 +26,7 @@ export default function SearchInput() {
       {  openedSearch ?
          <form className="collapse-search" ref={searchRef}>
            <label className="screenReader-only" htmlFor="searchbox">Informe a busca por algo na página</label>
-           <Input placeholder="Busque por algo" id="searchbox"/>
+           <Input placeholder="Busque por algo" id="searchbox2" onKeyDown={e => props.handleKeyDown(e)}/>
            <Button className="button-icon" onClick={toggleSearch}>
             <img src={Close} alt="Fechar" />
            </Button>

@@ -1,6 +1,8 @@
 import React, { createContext, useState } from 'react';
 import hljs from 'highlight.js';
 import { toast } from 'react-toastify';
+import { searchProject } from '../utils/handleSearchProject';
+
 export const CodeEditorContext = createContext();
 
 export default function CodeEditorProvider(props) {
@@ -12,6 +14,13 @@ export default function CodeEditorProvider(props) {
     const [codeTextHighlighted, setCodeTextHighlighted] = useState('');
     const [toggleCode, setToggleCode] = useState(true);
     const [projects, setProjects] = useState([]);
+    const [filteredProjects, setFilteredProjects] = useState([]);
+
+    // Filtered project
+    const handleFilteredProjects = (target) => {
+        const filteredResults = searchProject(target);
+        setFilteredProjects(filteredResults);
+    }
 
     // Project component
     const handleSaveProject = (e) => {
@@ -90,7 +99,9 @@ export default function CodeEditorProvider(props) {
             handleChangeDescription, 
             handleChangeLanguage,
             handleChangeColor,
-            handleSaveProject
+            handleSaveProject,
+            handleFilteredProjects,
+            filteredProjects
         }}> 
             {props.children}
         </CodeEditorContext.Provider>

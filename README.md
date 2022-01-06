@@ -1,13 +1,45 @@
-# Getting Started with Create React App
+<h1 align="center">
+  <img alt="banner CodeTextEditor" title="#CodeTextEditor" src="./src/assets/images/banner.png" />
+</h1>
 
-## `yarn start`
+# CodeTextEditor
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+A aplicação é uma forma de compartilhar textos em determinadas linguagens de programação.
 
-## Code Organization
+<p align="center">
+ <a href="#layout">Layout</a> •
+ <a href="#tecnologias">Tecnologias</a> • 
+ <a href="#pré-requisitos">Pré-requisitos</a> •
+ <a href="#organização">Organização</a> •
+ <a href="#Rodando o CodeTextEditor">Rodando o CodeTextEditor</a>•
+ <a href="#autor">Autor</a> •
+</p>
+
+## Layout
+
+- [Figma](https://www.figma.com/file/Ve4hpTfmMa7yAFneoGtGKD/Alura-Challenge---Edi%C3%A7%C3%A3o-Front-end)
+
+## Tecnologias
+
+As seguintes ferramentas/bibliotecas foram usadas na construção do projeto:
+
+- [Node.js](https://nodejs.org/en/)
+- [React](https://pt-br.reactjs.org/)
+- [React-router-dom](https://www.npmjs.com/package/react-router-dom)
+- [Highlight.js](https://highlightjs.org/)
+- [React-highlight](https://www.npmjs.com/package/react-highlight)
+- [React-toastify](https://fkhadra.github.io/react-toastify/introduction)
+- [html-to-image](https://www.npmjs.com/package/html-to-image)
+
+## Pré-requisitos
+
+- [Git](https://git-scm.com)
+- [Node.js](https://nodejs.org/en/)
+- Um editor de código, como o [VSCode](https://code.visualstudio.com/)
+
+## Organização
+
+### Páginas
 
 - App:
 
@@ -27,7 +59,7 @@ You will also see any lint errors in the console.
   - SideMenu
   - Card
 
-### Components
+### Componentes
 
 - Header
   - SearchInput
@@ -47,18 +79,26 @@ You will also see any lint errors in the console.
     - Highlight
   - User
 
-### Support Components
+### Componentes de suporte
 
 - Input
 - Button
 
-## Package, Libraries and Dependencies
+## Rodando o CodeTextEditor
 
-- react-router-dom
-- highlight.js
-- react-highlight
-- react-toastify
+```bash
 
-## Futures challeges
+# Clone este repositório
+$ git clone <https://github.com/Alice7H/code-text-editor.git>
 
-- Change css to styled components ?
+# Acesse a pasta do projeto no terminal/cmd
+$ cd code-text-editor
+
+# Instale as dependências
+$ yarn install
+
+```
+
+## Autor
+
+Feito com ❤️ por Alice Hata 👋🏽 [Entre em contato!](https://github.com/Alice7H/)

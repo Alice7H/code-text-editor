@@ -6,6 +6,10 @@ body {
   overflow-x: hidden;
 }
 
+iframe {
+  visibility: none;
+}
+
 :root {
   --menu-color: #2d415b;
   --main-text: #ffff;
@@ -18,6 +22,7 @@ body {
   --blue-16: rgba(80, 129, 251, 0.16);
   --blue-24: rgba(80, 129, 251, 0.24);
   --blue-64: rgba(80, 129, 251, 0.64);
+  --blue-72: rgba(80, 129, 251, 0.72);
   --darkBlue: #051d3b;
   --lightBlue1: #7ba4fc;
   --lightBlue2: #96b9fd;
