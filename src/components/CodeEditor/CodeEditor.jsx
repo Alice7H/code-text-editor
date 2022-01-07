@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useEffect, useContext } from 'react';
 import { CodeEditorContext } from '../../contexts/ProjectContext'; 
 import Button from '../Button';
 import BoxCodeEditor from '../BoxCodeEditor';
@@ -6,20 +6,26 @@ import ExportForm from '../ExportForm';
 import Highlight from 'react-highlight';
 import './CodeEditor.css';
 
-export default function CodeEditor() {
-
+export default function CodeEditor({project}) {
   const {
-    handleChangeHighlight, 
-    codeTextHighlighted,
-    handleChangeCode, 
     toggleCode, 
-    codeText  
+    handleChangeHighlight,
+    codeTextHighlighted,
+    setCodeHighlight,
+    codeHighlight,
+    colorBorderBox,
   } = useContext(CodeEditorContext);
+
+  const handleChangeCode = (e) => setCodeHighlight(e.target.value)
+
+  useEffect(() => {
+    project != null && setCodeHighlight(project.code)
+  },[project, setCodeHighlight])
 
   return (
     <section className="code-editor">
       <div className="capture">
-      <BoxCodeEditor>
+      <BoxCodeEditor color={colorBorderBox}>
         { codeTextHighlighted === ''
           ? 
           <>
@@ -27,7 +33,7 @@ export default function CodeEditor() {
             <textarea type="code" 
               className="code-editor_textarea"
               onChange={handleChangeCode}
-              value={codeText} 
+              value={codeHighlight} 
               id="code"
               />
           </>

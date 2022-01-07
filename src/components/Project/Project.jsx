@@ -1,31 +1,51 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState, useCallback } from 'react';
+import { useLocation } from 'react-router-dom';
 import { CodeEditorContext } from '../../contexts/ProjectContext';
+import { languages } from '../../utils/handleLanguageList';
 import Input from '../Input';
 import Button from '../Button';
 import './Project.css';
 
-export default function Project() {
+export default function Project({project}) {
+  const location = useLocation();
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
   const { 
-    handleChangeName,
-    handleChangeDescription,
-    handleChangeLanguage,
-    handleChangeColor,
-    handleSaveProject 
+    setColorBorderBox, colorBorderBox,
+    setLanguageHighlight, languageHighlight,
+    handleSaveProject, clearForms
   } = useContext(CodeEditorContext);
-  const languages = [
-    { value: 'javascript', label: 'Javascript'},
-    { value: 'html', label: 'HTML'},
-    { value: 'python', label: 'Python' },
-    { value: 'java', label: 'Java' },
-    { value: 'php', label: 'PHP' },
-    { value: 'c', label: 'C' },
-    { value: 'css', label: 'CSS' },
-  ];
 
-  const handleProject = (event) => {
-    event.preventDefault();
-    handleSaveProject(event);
+  const handleChangeName = (e) => setName(e.target.value)
+  const handleChangeDescription = (e) => setDescription(e.target.value)
+  const handleChangeLanguage = (e) => setLanguageHighlight(e.target.value)
+  const handleChangeColor = (e) => setColorBorderBox(e.target.value)
+  
+  const handleProject = (e) => {
+    e.preventDefault();
+    const prj = { name, description}
+    handleSaveProject(prj, project?.id);
+    resetForms();
   }
+
+  const resetForms = useCallback(() => {
+    clearForms();
+    setName("");
+    setDescription("");
+  },[clearForms])
+
+  const editProjects = useCallback(() => {
+    setName(project.name);
+    setDescription(project.description);
+    setColorBorderBox(project.color);
+    setLanguageHighlight(project.language);
+  }, [project, setColorBorderBox, setLanguageHighlight])
+
+  useEffect(() => {
+    project === null || location.pathname === '/'
+    ? resetForms()
+    : editProjects() 
+  }, [project, editProjects, resetForms, location]);
 
   return (
     <aside className="project">
@@ -34,18 +54,19 @@ export default function Project() {
 
         <label className="screenReader-only" htmlFor="name">Nome do seu projeto</label>
         <Input placeholder="Nome do seu projeto" 
-        onChange={handleChangeName} id="name"/>
+        onChange={handleChangeName} id="name" value={name}/>
 
         <label className="screenReader-only" htmlFor="description">Descrição do seu projeto</label>
         <textarea placeholder="Descrição do seu projeto" className="input"
-        onChange={handleChangeDescription} id="description"/>
+        onChange={handleChangeDescription} id="description" 
+        value={description}/>
         
         <h2>Personalização</h2>
 
         <div className="personalization">
           <label className="screenReader-only" htmlFor="language">Linguagem do projeto</label>
           <select className="input" id="language"
-          onChange ={handleChangeLanguage} >
+          onChange ={handleChangeLanguage}  value={languageHighlight}>
             { languages.map( (lang, index) => 
               <option key={index} value={lang.value}>
                 {lang.label}
@@ -55,7 +76,7 @@ export default function Project() {
 
           <label className="screenReader-only" htmlFor="color">Cor da borda da caixa do editor de código</label>
           <input type="color" id="color"  
-            onChange={handleChangeColor} 
+            onChange={handleChangeColor} value={colorBorderBox}
           />
         </div>
 

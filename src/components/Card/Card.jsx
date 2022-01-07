@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Highlight from 'react-highlight';
 import BoxCodeEditor from '../BoxCodeEditor';
 import User from '../User';
@@ -10,10 +11,11 @@ import './Card.css';
 export default function Card(props) {
   const [toggleFavorite, setToggleFavorite] = useState(false);
   const [counterFavorite, setCounterFavorite] = useState(0);
+  const navigation = useNavigate();
   const project = props.project;
 
   function handleEditProject(){
-    alert(props.project.id);
+    navigation(`/${project.id}`);
   }
 
   function handleComment(e) {

@@ -10,6 +10,7 @@ function App() {
       <BrowserRouter>
       <Routes>
         <Route path="/" element={<EditCodePage/>} />
+        <Route path="/:id" element={<EditCodePage/>} />
         <Route path="/community" element={<CommunityPage />} />
       </Routes>
       </BrowserRouter>
