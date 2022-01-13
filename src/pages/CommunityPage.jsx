@@ -5,9 +5,9 @@ import Card from '../components/Card';
 import { CodeEditorContext } from '../contexts/ProjectContext';
 
 export default function Community() {
-  const projects = JSON.parse(localStorage.getItem('projects'));
   const { filteredProjects } = useContext(CodeEditorContext);
-   
+  const projects = JSON.parse(localStorage.getItem('projects'));
+  
   return (
     <>
      <Header />
@@ -15,11 +15,11 @@ export default function Community() {
         <SideMenu/>
         <section className="cards">
           { 
-            filteredProjects && filteredProjects.length > 0  
-            ? 
-            filteredProjects.map( filtered => <Card project={filtered} key={filtered.id} />)
-            :
-            projects.length > 0 && projects.map( project => <Card project={project} key={project.id} />)
+            filteredProjects !== null && filteredProjects.length > 0  
+            ? filteredProjects.map(filtered => <Card project={filtered} key={filtered.id} />)
+            : projects !== null && projects.length > 0 
+            ? projects.map(project => <Card project={project} key={project.id} />)
+            : <h2>Você ainda não tem nenhum projeto salvo</h2>
           }   
         </section>
       </main>

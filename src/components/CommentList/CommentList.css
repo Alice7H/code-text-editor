@@ -1,0 +1,32 @@
+.comment-list {
+  margin: 32px;
+  line-height: 24px;
+  width: 50%;
+}
+
+.comment-item {
+  border: 1px solid var(--blue);
+  border-radius: 8px;
+  margin-bottom: 32px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.comment-right {
+  margin-top: 10px;
+  align-self: flex-end;
+  margin-right: 22px;
+}
+
+@media screen and (max-width: 768px) {
+  .comment-list {
+    width: 75%;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .comment-list {
+    width: calc(100% - 64px);
+  }
+}

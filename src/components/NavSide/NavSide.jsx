@@ -1,14 +1,23 @@
-import React from 'react'
-import Button from '../Button';
+import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { CodeEditorContext } from '../../contexts/ProjectContext';
+import Button from '../Button';
 import Code from '../../assets/images/icon-code-slash.svg';
 import Community from '../../assets/images/icon_community.svg';
 import './NavSide.css';
 
 export default function NavSide() {
+  const { clearForms, handleFilteredProjects } = useContext(CodeEditorContext);
   const navigate = useNavigate();
-  const handleLinkToCodEditorPage = () => navigate("/")
-  const handleLinkToCommunity =() => navigate("/community")
+  const handleLinkToCodEditorPage = () => {
+    clearForms();
+    navigate("/"); 
+  }
+  const handleLinkToCommunity =() => {
+    clearForms();
+    handleFilteredProjects('');
+    navigate("/community")
+  }
 
   return (
     <>

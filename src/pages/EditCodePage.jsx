@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import Header from '../components/Header';
 import SideMenu from '../components/SideMenu';
@@ -9,18 +9,18 @@ import { ToastContainer } from 'react-toastify';
 export default function EditCodePage() {
   const { id } = useParams();
   const [project, setProject]= useState(null);
+  
+  const getProject = useCallback(() => {
+    if(id){
+      const projects = JSON.parse(localStorage.getItem('projects'));
+      const prj = projects?.find(project => project.id === parseInt(id));
+      prj !== undefined && setProject(prj);
+    }
+  },[id]);
 
   useEffect(() => {
-    const getProject = () => {
-      if(id){
-        const projects = JSON.parse(localStorage.getItem('projects'))
-        const prj = projects.find(project => project.id === parseInt(id));
-        setProject(prj);
-      }
-    }
     getProject();
-
-  }, [id])
+  }, [getProject])
 
   return (
     <>

@@ -8,24 +8,20 @@ import './CodeEditor.css';
 
 export default function CodeEditor({project}) {
   const {
-    toggleCode, 
-    handleChangeHighlight,
-    codeTextHighlighted,
-    setCodeHighlight,
-    codeHighlight,
-    colorBorderBox,
+    toggleCode, handleChangeHighlight, codeTextHighlighted,
+    setCodeText, codeText, color,
   } = useContext(CodeEditorContext);
 
-  const handleChangeCode = (e) => setCodeHighlight(e.target.value)
+  const handleChangeCode = (e) => setCodeText(e.target.value)
 
   useEffect(() => {
-    project != null && setCodeHighlight(project.code)
-  },[project, setCodeHighlight])
+    project !== null && setCodeText(project.code)
+  },[project, setCodeText])
 
   return (
     <section className="code-editor">
       <div className="capture">
-      <BoxCodeEditor color={colorBorderBox}>
+      <BoxCodeEditor color={color}>
         { codeTextHighlighted === ''
           ? 
           <>
@@ -33,7 +29,7 @@ export default function CodeEditor({project}) {
             <textarea type="code" 
               className="code-editor_textarea"
               onChange={handleChangeCode}
-              value={codeHighlight} 
+              value={codeText} 
               id="code"
               />
           </>

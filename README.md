@@ -10,9 +10,8 @@ A aplicação é uma forma de compartilhar textos em determinadas linguagens de 
  <a href="#layout">Layout</a> •
  <a href="#tecnologias">Tecnologias</a> • 
  <a href="#pré-requisitos">Pré-requisitos</a> •
- <a href="#organização">Organização</a> •
- <a href="#Rodando o CodeTextEditor">Rodando o CodeTextEditor</a>•
- <a href="#autor">Autor</a> •
+ <a href="#rodando-o-codetexteditor">Rodando o CodeTextEditor</a> •
+ <a href="#autora">Autora</a> 
 </p>
 
 ## Layout
@@ -37,53 +36,6 @@ As seguintes ferramentas/bibliotecas foram usadas na construção do projeto:
 - [Node.js](https://nodejs.org/en/)
 - Um editor de código, como o [VSCode](https://code.visualstudio.com/)
 
-## Organização
-
-### Páginas
-
-- App:
-
-  - EditCodePage
-  - CommunityPage
-
-- EditCodePage:
-
-  - Header
-  - SideMenu
-  - CodeEditor
-  - Project
-
-- CommunityPage:
-
-  - Header
-  - SideMenu
-  - Card
-
-### Componentes
-
-- Header
-  - SearchInput
-  - Profile
-    - User
-    - CollapseMenu
-      - NavSide
-      - User
-- SideMenu
-  - NavSide
-- CodeEditor
-  - BoxCodeEditor
-    - Textarea/Highlight
-- Project
-- Card
-  - BoxCodeEditor
-    - Highlight
-  - User
-
-### Componentes de suporte
-
-- Input
-- Button
-
 ## Rodando o CodeTextEditor
 
 ```bash
@@ -99,6 +51,6 @@ $ yarn install
 
 ```
 
-## Autor
+## Autora
 
 Feito com ❤️ por Alice Hata 👋🏽 [Entre em contato!](https://github.com/Alice7H/)

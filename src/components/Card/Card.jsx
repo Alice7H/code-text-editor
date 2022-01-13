@@ -1,40 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { CommentContext } from '../../contexts/CommentContext';
 import Highlight from 'react-highlight';
-import BoxCodeEditor from '../BoxCodeEditor';
 import User from '../User';
 import Button from '../Button';
-import Comment from '../../assets/images/comments.svg';
+import BoxCodeEditor from '../BoxCodeEditor';
 import { ReactComponent as Favorite} from '../../assets/images/favorite.svg';
+import Comment from '../../assets/images/comments.svg';
 import './Card.css';
 
 export default function Card(props) {
   const [toggleFavorite, setToggleFavorite] = useState(false);
   const [counterFavorite, setCounterFavorite] = useState(0);
   const navigation = useNavigate();
+  const { filterComments } = useContext(CommentContext);
   const project = props.project;
+  const comments = filterComments(parseInt(project.id));
+  
+  const handleEditProject = () => navigation(`/${project.id}`)
 
-  function handleEditProject(){
-    navigation(`/${project.id}`);
-  }
-
-  function handleComment(e) {
+  const handleComment = (e) => {
     e.stopPropagation();
-    alert('botão comentário clicado');
-    // abre caixa de popup para inserir comentário ?
-    // redireciona para outra página para fazer comentário ?
+    navigation(`/comment/${project.id}`);
   }
 
-  function handleFavorite(e){
+  const handleFavorite = (e) => {
     e.stopPropagation();
     setToggleFavorite(!toggleFavorite);
-    !toggleFavorite && setCounterFavorite(counter => counter + 1)
+    !toggleFavorite && setCounterFavorite(counter => counter + 1);
     toggleFavorite && setCounterFavorite(counter => counter - 1);
-  }
-
-  function handleShowProfile(e){
-    e.stopPropagation();
-    alert('botão autor do projeto clicado');
   }
 
   return (
@@ -53,7 +47,7 @@ export default function Card(props) {
             <Button className="button-project" onClick={handleComment} 
               ariaLabel="Adicionar comentário" role="button">
               <img src={Comment} alt=""/>
-              0
+              {comments.length || 0}
             </Button>
             <Button className="button-project" onClick={handleFavorite} 
               ariaLabel="Favoritar" role="button">
@@ -62,7 +56,7 @@ export default function Card(props) {
               { counterFavorite }
             </Button>
           </div>
-          <div className="right" onClick={handleShowProfile}>
+          <div className="right">
             <User className="button-user__small"/>
           </div>
         </div>

@@ -6,25 +6,27 @@ import { searchProject } from "../utils/handleSearchProject";
 export const CodeEditorContext = createContext();
 
 export default function CodeEditorProvider(props) {
-  const [languageHighlight, setLanguageHighlight] = useState('javascript');
-  const [colorBorderBox, setColorBorderBox] = useState('#7fffd4');
-  const [codeHighlight, setCodeHighlight] = useState("");
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
+  const [language, setLanguage] = useState('javascript');
+  const [color, setColor] = useState('#7fffd4');
+  const [codeText, setCodeText] = useState('');
 
   const [toggleCode, setToggleCode] = useState(true);
   const [codeTextHighlighted, setCodeTextHighlighted] = useState("");
-  const [projects, setProjects] = useState([]);
   const [filteredProjects, setFilteredProjects] = useState([]);
-
+  
   // Filtered project
   const handleFilteredProjects = (target) => {
     const filteredResults = searchProject(target);
     setFilteredProjects(filteredResults);
   };
 
+  // Forms changed
   const handleChangeHighlight = () => {
     setToggleCode(!toggleCode);
     if (toggleCode) {
-      const highlightedText = hljs.highlight(codeHighlight, { language: languageHighlight });
+      const highlightedText = hljs.highlight(codeText, { language });
       // { language, code, value} = highlightedText
       setCodeTextHighlighted(highlightedText);
     } else {
@@ -32,86 +34,86 @@ export default function CodeEditorProvider(props) {
     }
   };
 
-    // Project component
-    const handleSaveProject = (prj, id) => {
-      if (!prj.name || !prj.description || !codeHighlight) {
-        toast.warn("Informe os campos corretamente.");
-      } else {
-        id ? _handleChangeProject(id,prj) : _handleCreateProject(prj);
-      }
-    };
-  
-    const _handleCreateProject = (prj) => {
-      const newProject = {
-        id: Date.now(),
-        name: prj.name,
-        description: prj.description,
-        language: languageHighlight,
-        color: colorBorderBox,
-        code: codeHighlight,
-      };
-      setProjects([...projects, newProject]);
-  
-      _saveInLocalStorage(newProject);
-      toast.success("Projeto salvo. Verifique na página da comunidade");
-    };
-  
-    const _handleChangeProject = (id, prj) => {
-      const uid = parseInt(id);
-      const editProject = {
-        id: uid,
-        name: prj.name,
-        description: prj.description,
-        language: languageHighlight,
-        color: colorBorderBox,
-        code: codeHighlight,
-      };
-      setProjects(
-        projects.map((item) => {
-          return item.id === uid ? item : editProject;
-        })
-      );
-  
-      _updateLocalStorage(uid, editProject);
-      toast.success("Projeto editado. Verifique na página da comunidade");
-    };
-  
-    const _saveInLocalStorage = (newProject) => {
-      const tempProject = JSON.parse(localStorage.getItem("projects"));
-      tempProject.push(newProject);
-      localStorage.setItem("projects", JSON.stringify(tempProject));
-    };
-
-    const _updateLocalStorage = (uid, editProject) => {
-      const tempProject = JSON.parse(localStorage.getItem("projects"));
-      const prjFiltered = tempProject.filter(prj => prj.id !== uid);
-      prjFiltered.push(editProject);
-      prjFiltered.sort((a,b) => a.id - b.id);
-      localStorage.setItem("projects", JSON.stringify(prjFiltered));
+  // Project component
+  const handleSaveProject = (id) => {
+    if (!name || !description || !codeText) {
+      toast.warn("Informe os campos corretamente.");
+    } else {
+      id ? _handleChangeProject(id) : _handleCreateProject();
     }
+  };
 
-    const clearForms = () => {
-      setColorBorderBox('#7fffd4');
-      setLanguageHighlight('javascript');
-      setCodeTextHighlighted("");
-      setCodeHighlight("");
-    }
+  const _handleCreateProject = () => {
+    const newProject = {
+      id: Date.now(),
+      name: name,
+      description: description,
+      language: language,
+      color: color,
+      code: codeText
+    };
+   
+    _saveInLocalStorage(newProject);
+    toast.success("Projeto salvo. Verifique na página da comunidade");
+  };
+
+  const _saveInLocalStorage = (newProject) => {
+    const tempProject = JSON.parse(localStorage.getItem("projects")) || [];
+    tempProject.push(newProject);
+    localStorage.setItem("projects", JSON.stringify(tempProject));
+  };
+  
+  const _handleChangeProject = (id) => {
+    const uid = parseInt(id);
+    const editProject = {
+      id: uid,
+      name: name,
+      description: description,
+      language: language,
+      color: color,
+      code: codeText
+    };
+    _updateLocalStorage(uid, editProject);
+    toast.success("Projeto editado. Verifique na página da comunidade");
+  };
+
+  const _updateLocalStorage = (uid, editProject) => {
+    const tempProject = JSON.parse(localStorage.getItem("projects"));
+    const prjFiltered = tempProject.filter(prj => prj.id !== uid);
+    prjFiltered.push(editProject);
+    prjFiltered.sort((a,b) => a.id - b.id);
+    localStorage.setItem("projects", JSON.stringify(prjFiltered));
+  }
+
+  const clearForms = () => {
+    setCodeText("");
+    setName("");
+    setDescription("");
+    setColor('#7fffd4');
+    setLanguage('javascript');
+    setCodeTextHighlighted("");
+    setToggleCode(true);
+  }
   
   return (
     <CodeEditorContext.Provider
       value={{
-        toggleCode,
-        handleChangeHighlight,
         handleFilteredProjects,
         filteredProjects,
-        handleSaveProject,
-        setCodeHighlight,
-        setColorBorderBox,
-        setLanguageHighlight,
+        toggleCode,
+        handleChangeHighlight,
         codeTextHighlighted,
-        codeHighlight,
-        colorBorderBox,
-        languageHighlight,
+        setCodeText,
+        codeText,
+        setColor,
+        color,
+        setName,
+        name,
+        setDescription,
+        description,
+        setLanguage,
+        language,
+        handleSaveProject,
         clearForms
       }}
     >

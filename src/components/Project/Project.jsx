@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useState, useCallback } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useContext, useEffect, useCallback } from 'react';
 import { CodeEditorContext } from '../../contexts/ProjectContext';
 import { languages } from '../../utils/handleLanguageList';
 import Input from '../Input';
@@ -7,45 +6,35 @@ import Button from '../Button';
 import './Project.css';
 
 export default function Project({project}) {
-  const location = useLocation();
-  const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
   const { 
-    setColorBorderBox, colorBorderBox,
-    setLanguageHighlight, languageHighlight,
+    setName, name,
+    setDescription, description,
+    setColor, color,
+    setLanguage, language,
     handleSaveProject, clearForms
   } = useContext(CodeEditorContext);
 
   const handleChangeName = (e) => setName(e.target.value)
   const handleChangeDescription = (e) => setDescription(e.target.value)
-  const handleChangeLanguage = (e) => setLanguageHighlight(e.target.value)
-  const handleChangeColor = (e) => setColorBorderBox(e.target.value)
+  const handleChangeLanguage = (e) => setLanguage(e.target.value)
+  const handleChangeColor = (e) => setColor(e.target.value)
   
   const handleProject = (e) => {
     e.preventDefault();
-    const prj = { name, description}
-    handleSaveProject(prj, project?.id);
-    resetForms();
-  }
-
-  const resetForms = useCallback(() => {
+    handleSaveProject(project?.id);
     clearForms();
-    setName("");
-    setDescription("");
-  },[clearForms])
+  }
 
   const editProjects = useCallback(() => {
     setName(project.name);
     setDescription(project.description);
-    setColorBorderBox(project.color);
-    setLanguageHighlight(project.language);
-  }, [project, setColorBorderBox, setLanguageHighlight])
+    setColor(project.color);
+    setLanguage(project.language);
+  }, [project, setColor, setLanguage, setName, setDescription])
 
   useEffect(() => {
-    project === null || location.pathname === '/'
-    ? resetForms()
-    : editProjects() 
-  }, [project, editProjects, resetForms, location]);
+    project !== null && editProjects() 
+  }, [project, editProjects]);
 
   return (
     <aside className="project">
@@ -66,7 +55,7 @@ export default function Project({project}) {
         <div className="personalization">
           <label className="screenReader-only" htmlFor="language">Linguagem do projeto</label>
           <select className="input" id="language"
-          onChange ={handleChangeLanguage}  value={languageHighlight}>
+          onChange ={handleChangeLanguage}  value={language}>
             { languages.map( (lang, index) => 
               <option key={index} value={lang.value}>
                 {lang.label}
@@ -76,7 +65,7 @@ export default function Project({project}) {
 
           <label className="screenReader-only" htmlFor="color">Cor da borda da caixa do editor de código</label>
           <input type="color" id="color"  
-            onChange={handleChangeColor} value={colorBorderBox}
+            onChange={handleChangeColor} value={color}
           />
         </div>
 

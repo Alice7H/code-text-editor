@@ -1,0 +1,32 @@
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 32px;
+  width: 50%;
+}
+
+.comment-form > textarea {
+  margin: 32px auto;
+  padding: 10px;
+  min-height: 150px;
+  width: 100%;
+  resize: none;
+}
+
+.comment-form > button {
+  width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .comment-form {
+    width: 75%;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .comment-form {
+    width: calc(100% - 64px);
+  }
+}
