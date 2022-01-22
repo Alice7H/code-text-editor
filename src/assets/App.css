@@ -68,6 +68,16 @@ h2 {
   box-sizing: border-box;
 }
 
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100vw;
+  padding: 32px;
+  box-sizing: border-box;
+}
+
 .screenReader-only {
   width: 1px;
   height: 1px;

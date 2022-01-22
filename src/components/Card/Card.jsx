@@ -10,18 +10,18 @@ import Comment from '../../assets/images/comments.svg';
 import './Card.css';
 
 export default function Card(props) {
+  const { data } = props;
   const [toggleFavorite, setToggleFavorite] = useState(false);
   const [counterFavorite, setCounterFavorite] = useState(0);
   const navigation = useNavigate();
   const { filterComments } = useContext(CommentContext);
-  const project = props.project;
-  const comments = filterComments(parseInt(project.id));
+  const comments = filterComments(parseInt(data.id));
   
-  const handleEditProject = () => navigation(`/${project.id}`)
+  const handleEditProject = () => navigation(`/${data.id}`)
 
   const handleComment = (e) => {
     e.stopPropagation();
-    navigation(`/comment/${project.id}`);
+    navigation(`/comment/${data.id}`);
   }
 
   const handleFavorite = (e) => {
@@ -33,14 +33,14 @@ export default function Card(props) {
 
   return (
     <div className="card" role="banner">   
-      <BoxCodeEditor color={project.color}>
-        <Highlight className={`language-${project.language}`} aria-label="Texto com highlight" >
-          {project.code}
+      <BoxCodeEditor color={data.color}>
+        <Highlight className={`language-${data.language}`} aria-label="Texto com highlight" >
+          {data.code}
         </Highlight>
       </BoxCodeEditor>
       <div className="card-body" onClick={ handleEditProject } >
-        <h2>{project.name}</h2>
-        <p>{project.description}</p>  
+        <h2>{data.name}</h2>
+        <p>{data.description}</p>  
         
         <div className="card-buttons" aria-haspopup="true">
           <div className="left">
