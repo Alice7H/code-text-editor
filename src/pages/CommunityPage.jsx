@@ -17,13 +17,13 @@ export default function Community() {
         <SideMenu/>
         <div className="cards">
         {
-         filteredProjects !== null && filteredProjects.length > 0 ?
+         filteredProjects !== null && filteredProjects?.length > 0 ?
          <Pagination
          data={filteredProjects}
          RenderComponent={Card}
          dataLimit={4}
          />
-         : projects !== null && projects.length > 0 
+         : projects !== null && projects?.length > 0 
          ?
          <Pagination
          data={projects}
@@ -31,8 +31,7 @@ export default function Community() {
          dataLimit={4}
          /> 
          : 
-         projects === null && projects.length === 0 &&
-         <h2>Você ainda não tem nenhum projeto salvo</h2> 
+         (projects === null || projects?.length === 0) && <h2>Você ainda não tem nenhum projeto salvo</h2>
         }
         </div>
       </div>
