@@ -48,7 +48,15 @@ $ cd code-text-editor
 
 # Instale as dependências
 $ yarn install
+#ou
+$ yarn install
 
+# Execute a aplicação em modo de desenvolvimento
+$ npm start
+#ou
+$ yarn start
+
+# O projeto inciará na porta:3000 - acesse <http://localhost:3000>
 ```
 
 ## Autora
