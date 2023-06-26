@@ -8,10 +8,10 @@ A aplicação é uma forma de compartilhar textos em determinadas linguagens de 
 
 <p align="center">
  <a href="#layout">Layout</a> •
- <a href="#tecnologias">Tecnologias</a> • 
+ <a href="#tecnologias">Tecnologias</a> •
  <a href="#pré-requisitos">Pré-requisitos</a> •
  <a href="#rodando-o-codetexteditor">Rodando o CodeTextEditor</a> •
- <a href="#autora">Autora</a> 
+ <a href="#autora">Autora</a>
 </p>
 
 ## Layout
@@ -47,7 +47,7 @@ $ git clone <https://github.com/Alice7H/code-text-editor.git>
 $ cd code-text-editor
 
 # Instale as dependências
-$ yarn install
+$ npm install
 #ou
 $ yarn install
 

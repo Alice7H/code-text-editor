@@ -15,7 +15,7 @@ export default function CodeEditorProvider(props) {
   const [toggleCode, setToggleCode] = useState(true);
   const [codeTextHighlighted, setCodeTextHighlighted] = useState("");
   const [filteredProjects, setFilteredProjects] = useState([]);
-  
+
   // Filtered project
   const handleFilteredProjects = (target) => {
     const filteredResults = searchProject(target);
@@ -27,7 +27,6 @@ export default function CodeEditorProvider(props) {
     setToggleCode(!toggleCode);
     if (toggleCode) {
       const highlightedText = hljs.highlight(codeText, { language });
-      // { language, code, value} = highlightedText
       setCodeTextHighlighted(highlightedText);
     } else {
       setCodeTextHighlighted('');
@@ -52,7 +51,7 @@ export default function CodeEditorProvider(props) {
       color: color,
       code: codeText
     };
-   
+
     _saveInLocalStorage(newProject);
     toast.success("Projeto salvo. Verifique na página da comunidade");
   };
@@ -62,7 +61,7 @@ export default function CodeEditorProvider(props) {
     tempProject.push(newProject);
     localStorage.setItem("projects", JSON.stringify(tempProject));
   };
-  
+
   const _handleChangeProject = (id) => {
     const uid = parseInt(id);
     const editProject = {
@@ -81,7 +80,7 @@ export default function CodeEditorProvider(props) {
     const tempProject = JSON.parse(localStorage.getItem("projects"));
     const prjFiltered = tempProject.filter(prj => prj.id !== uid);
     prjFiltered.push(editProject);
-    prjFiltered.sort((a,b) => a.id - b.id);
+    prjFiltered.sort((a, b) => a.id - b.id);
     localStorage.setItem("projects", JSON.stringify(prjFiltered));
   }
 
@@ -94,7 +93,7 @@ export default function CodeEditorProvider(props) {
     setCodeTextHighlighted("");
     setToggleCode(true);
   }
-  
+
   return (
     <CodeEditorContext.Provider
       value={{

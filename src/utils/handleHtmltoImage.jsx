@@ -1,7 +1,7 @@
 import { toPng, toJpeg, toSvg } from 'html-to-image';
 
 export const exportFormat = (format, node) => {
-  switch(format){
+  switch (format) {
     case 'png':
       _pngFormat(node);
       break;
@@ -17,41 +17,39 @@ export const exportFormat = (format, node) => {
   }
 }
 
+const createLinkElement = (dataUrl, formatLowercase) => {
+  const link = document.createElement('a');
+  link.download = `codeText-image.${formatLowercase}`;
+  link.href = dataUrl;
+  link.click();
+}
+
 const _pngFormat = (node) => {
   toPng(node, { cacheBust: true })
-  .then((dataUrl) => {
-    const link = document.createElement('a');
-    link.download = `codeText-image.png`;
-    link.href = dataUrl;
-    link.click();
-  })
-  .catch((err) => {
-    console.log(err)
-  })
+    .then((dataUrl) => {
+      createLinkElement(dataUrl, 'png');
+    })
+    .catch((err) => {
+      console.log(err)
+    })
 }
 
 const _jpegFormat = (node) => {
   toJpeg(node, { cacheBust: true })
-  .then((dataUrl) => {
-    const link = document.createElement('a');
-    link.download = `codeText-image.jpeg`;
-    link.href = dataUrl;
-    link.click();
-  })
-  .catch((err) => {
-    console.log(err)
-  })
+    .then((dataUrl) => {
+      createLinkElement(dataUrl, 'jpeg');
+    })
+    .catch((err) => {
+      console.log(err)
+    })
 }
 
 const _svgFormat = (node) => {
   toSvg(node, { cacheBust: true })
-  .then((dataUrl) => {
-    const link = document.createElement('a');
-    link.download = `codeText-image.svg`;
-    link.href = dataUrl;
-    link.click();
-  })
-  .catch((err) => {
-    console.log(err)
-  })
+    .then((dataUrl) => {
+      createLinkElement(dataUrl, 'svg');
+    })
+    .catch((err) => {
+      console.log(err)
+    })
 }
